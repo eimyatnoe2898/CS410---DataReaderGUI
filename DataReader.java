@@ -1,8 +1,9 @@
+package lol;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.Map.Entry;
+import javax.swing.JFrame;
 
 public class DataReader {
 	private Scanner fileScan; // For file input
@@ -47,6 +48,7 @@ public class DataReader {
 			int smallestOccurence = 0;
 			lineNumber++;
 			readLine = fileScan.next();
+			@SuppressWarnings("resource")
 			Scanner line = new Scanner(readLine);
 			countInt = 0;
 			linesum = 0;
@@ -234,12 +236,14 @@ public class DataReader {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Enter file name");
-		Scanner userInput = new Scanner(System.in);
-		String fileName = userInput.next();
-		DataReader dataReader1 = new DataReader(fileName);
-		System.out.println(fileName);
-		dataReader1.readFile();
+		  
+		  JFrame frame = new JFrame("Data Reader");
+	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	      frame.getContentPane().add(new DataReaderPanel());
+
+	      frame.pack();
+	      frame.setVisible(true);
 	}
 
 }
