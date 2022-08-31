@@ -214,6 +214,18 @@ public class DataReader2 {
 		}
 		return result;
 	}
+	
+//	public static void main(String[] args) throws IOException {
+//	// TODO Auto-generated method stub
+//	  
+//	  JFrame frame = new JFrame("Data Reader");
+//      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//      frame.getContentPane().add(new DataReaderPanel3());
+//
+//      frame.pack();
+//      frame.setVisible(true);
+//}
 
 
 }
