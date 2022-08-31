@@ -18,7 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileSystemView;
 
-public class DataReaderPanel3 extends JPanel {
+public class DataReaderPanel3 extends JFrame {
 	/**
 	 * 
 	 */
@@ -33,35 +33,24 @@ public class DataReaderPanel3 extends JPanel {
 	public DataReaderPanel3() {
 		
 		dataReader = new DataReader2();
-		setLayout(null);
-
-		fileInput = new JButton("Please select a file");
-		fileInput.addActionListener(new ButtonListener());
-		// creating JTextArea
-		text = new JLabel();
-
-		// formating
-		setPreferredSize(new Dimension(650, 750));
-
-		Dimension buttonSize = fileInput.getPreferredSize();
-		fileInput.setBounds(200, 50, 200, buttonSize.height);
-		fileInput.setVisible(true);
-
-		text.setBounds(200, 125, 500, 700);
-		text.setVisible(true);
+		//Had to do a layout...
+		setLayout(new BorderLayout());
 		
-//        JScrollPane scrollableTextArea = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
-//        		JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);  
-//        
-//        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
-
-        JScrollPane scrollableTextArea = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollableTextArea.setBounds(200, 125, 500, 700);
-        scrollableTextArea.add(text);
-        
-		add(text);
-		add(scrollableTextArea);
-		add(fileInput);
+		JPanel panel = new JPanel();
+		add(BorderLayout.CENTER, new JScrollPane(panel));
+		setSize(600,400);
+		//basic operators
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setVisible(true);
+		//set button and text
+		fileInput = new JButton("Please select a file");
+		text = new JLabel();
+		//add text to panel
+		panel.add(text);
+		add(fileInput, BorderLayout.NORTH);
+		fileInput.setVisible(true);
+		fileInput.addActionListener(new ButtonListener());
 	}
 
 	private class ButtonListener implements ActionListener {
